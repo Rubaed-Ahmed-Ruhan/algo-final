@@ -1,0 +1,35 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+#define int long long
+#define endl '\n'
+
+
+int fac_rec(int n) {
+	if(n == 0) return 1;
+	if(n == 1) return 1;
+	return n * fac_rec(n - 1);
+}
+
+
+void solve() {
+
+	cout << fac_rec(3) << endl;
+}
+ 
+int32_t main() {
+
+   
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr); cout.tie(nullptr);
+    
+#ifndef ONLINE_JUDGE
+    freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
+#endif 
+    
+    int tt = 1; 
+    // cin >> tt;
+    while(tt--) solve();
+    return 0;
+}
