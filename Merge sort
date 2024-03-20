@@ -1,0 +1,65 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+#define ll long long
+#define endl '\n'
+
+
+const int N = 1e5 + 9;
+int a[N];
+
+
+void merge_sort(int l, int r) {
+  if (l >= r) return;
+  int mid = (l + r) / 2;
+  merge_sort(l, mid);
+  merge_sort(mid + 1, r);
+  vector<int> L, R;
+  for (int i = l; i <= mid; i++) {
+    L.push_back(a[i]);
+  }
+  for (int i = mid + 1; i <= r; i++) {
+    R.push_back(a[i]);
+  }
+  int Lid = 0, Rid = 0, i = l;
+  while (Lid < (int)L.size() or Rid < (int)R.size()) {
+    if (Lid == (int)L.size()) {
+      a[i] = R[Rid];
+      Rid++; i++;
+    }
+    else if (Rid == (int)R.size() or L[Lid] < R[Rid]) {
+      a[i] = L[Lid];
+      Lid++; i++;
+    }
+    else {
+      a[i] = R[Rid];
+      Rid++; i++;
+    }
+  }
+}
+
+
+
+void solve() {
+
+  int n; cin >> n;
+  for(int i = 1; i <= n; i++) cin >> a[i];
+  merge_sort(1, n);
+  for(int i = 1; i <= n; i++) cout << a[i] << ' ';
+}
+
+int32_t main() {
+
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr); cout.tie(nullptr);
+    
+#ifndef ONLINE_JUDGE
+    freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
+#endif 
+    
+    int tt = 1; 
+    // cin >> tt;
+    while(tt--) solve();
+    return 0;
+}
