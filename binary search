@@ -13,9 +13,8 @@ void solve() {
       {
           cin >> a[i] ;
       }
-      int x ;
-       cin >> x;
-
+     int x ;
+     cin >> x;
 
       int l,r;
       l =0;
